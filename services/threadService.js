@@ -1,4 +1,4 @@
-angular.module("rtfmApp").service("threadService", function(){
+angular.module("rtfmApp").service("threadService", function($firebaseArray, $firebaseObject, fb){
     var data = {
         "threads": [
             {
@@ -29,14 +29,12 @@ angular.module("rtfmApp").service("threadService", function(){
     }    
 
     this.getAllThreads = function(){
-        return data.threads;
+        var ref = new Firebase(fb.url + '/threads/') 
+        return $firebaseArray(ref);
     };
 
     this.getThread = function(threadId){
-         for(var i = 0; i < data.threads.length; i++){
-             if(i === threadId){
-                 return data.threads[i]
-             }
-         }
+        var ref = new Firebase(fb.url + '/threads/' + threadId);
+        return $firebaseObject(ref);
     };
 });

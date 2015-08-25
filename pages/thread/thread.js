@@ -5,12 +5,6 @@ angular.module('rtfmApp')
     $scope.newComment = '';
     $scope.thread = threadService.getThread(threadId);
 
-    console.log($scope.thread)  //this will be empty :(
-    
-    $scope.thread.$loaded().then(function (thread){
-        console.log(thread);
-    });
-
     $scope.addComment= function(){ 
         if(!$scope.newComment){
             return false; //Don't do anything if the text box is empty

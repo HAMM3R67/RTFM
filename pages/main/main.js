@@ -17,7 +17,7 @@ angular.module('rtfmApp')
             comments: []
         };
 
-        $scope.threads.push(newThread);
+        $scope.threads.$add(newThread);
 
         $scope.newThreadTitle = ''; //Clear the text in the input box
     }
